@@ -1,22 +1,16 @@
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import modelo.entidad.Autor;
+import modelo.seed.DatabaseSeeder;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManagerFactory factoria = Persistence.createEntityManagerFactory("a3JPA");
-        EntityManager em = factoria.createEntityManager();
-
-        Autor autor = new Autor();
-        autor.setNombre("Alonso");
-        autor.setApellidos(" Fernández Vidal");
-        autor.setFechaNacimiento(LocalDate.parse("1990-03-06"));
-
-        EntityTransaction et = em.getTransaction();
-        et.begin();
-        em.persist(autor);
-        et.commit();
+        // Ejecutamos la semilla para insertar registros
+        DatabaseSeeder dbs = new DatabaseSeeder();
+        dbs.seeder();
 
         System.out.println("Autor creado");
     }

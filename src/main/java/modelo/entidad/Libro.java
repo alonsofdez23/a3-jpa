@@ -25,6 +25,16 @@ public class Libro {
     @ManyToMany(mappedBy = "libros")
     private List<Libreria> librerias = new ArrayList<>();
 
+    public Libro() {
+    }
+
+    public Libro(String titulo, double precio, Autor autor, Editorial editorial) {
+        this.titulo = titulo;
+        this.precio = precio;
+        this.autor = autor;
+        this.editorial = editorial;
+    }
+
     public long getId() {
         return id;
     }

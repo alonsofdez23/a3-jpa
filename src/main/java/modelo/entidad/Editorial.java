@@ -17,6 +17,14 @@ public class Editorial {
     @OneToMany(mappedBy = "editorial", cascade = CascadeType.ALL)
     private List<Libro> libros = new ArrayList<>();
 
+    public Editorial() {
+    }
+
+    public Editorial(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
+
     public long getId() {
         return id;
     }

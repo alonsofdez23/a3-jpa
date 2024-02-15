@@ -2,8 +2,8 @@ package modelo.entidad;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,10 +14,20 @@ public class Autor {
     private long id;
     private String nombre;
     private String apellidos;
-    private LocalDate fechaNacimiento;
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
 
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Libro> libros = new ArrayList<>();
+
+    public Autor() {
+    }
+
+    public Autor(String nombre, String apellidos, Date fechaNacimiento) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
+    }
 
     public long getId() {
         return id;
@@ -43,11 +53,11 @@ public class Autor {
         this.apellidos = apellidos;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

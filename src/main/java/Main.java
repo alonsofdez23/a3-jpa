@@ -3,7 +3,13 @@ import modelo.entidad.Autor;
 import modelo.entidad.Libreria;
 import modelo.entidad.Libro;
 import modelo.seed.DatabaseSeeder;
+import req3.Almacen;
+import req3.Articulo;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.File;
 import java.util.List;
 
 public class Main {
@@ -67,5 +73,41 @@ public class Main {
 //        EntityManagerFactory emf2 = Persistence.createEntityManagerFactory("req2");
 //        EntityManager em2 = emf2.createEntityManager();
 //        EntityTransaction transaction2 = em2.getTransaction();
+
+        // Requerimiento 3
+        JAXBContext contexto;
+        try {
+            contexto = JAXBContext.newInstance(Almacen.class);
+        } catch (JAXBException e) {
+            System.out.println("Error creando el contexto");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        Marshaller m;
+        try {
+            m = contexto.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Creamos un Almacen y le añadimos 3 artículos
+            Almacen almacen = new Almacen();
+            almacen.getArticulos().add(new Articulo(1, "Aguacate", "Frutas", 78, 4.7f));
+            almacen.getArticulos().add(new Articulo(2, "Queso", "Lacteos", 45, 6.2f));
+            almacen.getArticulos().add(new Articulo(3, "Zanahoria", "Verduras", 132, 1.1f));
+
+            System.out.println("====================================================");
+            System.out.println("================== JAXB Artículos ==================");
+            System.out.println("====================================================");
+            m.marshal(almacen, System.out);
+
+            m.marshal(almacen, new File("almacen.xml"));
+
+        } catch (JAXBException e) {
+            System.out.println("Error convirtiendo el objeto a formato XML");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }

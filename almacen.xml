@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<almacen>
+    <articulos>
+        <articulos id="1">
+            <nombre>Aguacate</nombre>
+            <descripcion>Frutas</descripcion>
+            <cantidad>78</cantidad>
+            <precio>4.7</precio>
+        </articulos>
+        <articulos id="2">
+            <nombre>Queso</nombre>
+            <descripcion>Lacteos</descripcion>
+            <cantidad>45</cantidad>
+            <precio>6.2</precio>
+        </articulos>
+        <articulos id="3">
+            <nombre>Zanahoria</nombre>
+            <descripcion>Verduras</descripcion>
+            <cantidad>132</cantidad>
+            <precio>1.1</precio>
+        </articulos>
+    </articulos>
+</almacen>

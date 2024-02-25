@@ -62,5 +62,10 @@ public class Main {
                 System.out.println("   -> Librería: " + libreria.getNombre());
             }
         }
+
+        // Requerimiento 2
+//        EntityManagerFactory emf2 = Persistence.createEntityManagerFactory("req2");
+//        EntityManager em2 = emf2.createEntityManager();
+//        EntityTransaction transaction2 = em2.getTransaction();
     }
 }

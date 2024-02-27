@@ -15,7 +15,13 @@ public class Libreria {
     private String nombreDueno;
     private String direccion;
 
+    // Relación muchos a muchos con la clase Libro. Esto significa que una librería puede tener varios libros
+    // asociados y, a su vez, un libro puede estar asociado a varias librerías.
     @ManyToMany(cascade = CascadeType.ALL)
+    // Especifica la tabla de unión que se creará en la base de datos para manejar la relación muchos a muchos.
+    // name = "libreria_libro" especifica el nombre de la tabla de unión.
+    // joinColumns y inverseJoinColumns especifican los nombres de las columnas que representan las claves foráneas
+    // en la tabla de unión.
     @JoinTable(name = "libreria_libro",
             joinColumns = @JoinColumn(name = "libreria_id"),
             inverseJoinColumns = @JoinColumn(name = "libro_id"))

@@ -14,6 +14,8 @@ public class Editorial {
     private String nombre;
     private String direccion;
 
+    // Relación uno a muchos con la clase Libro. Esto significa que una editorial puede tener varios libros asociados.
+    // El atributo mappedBy especifica el nombre del campo en la clase Libro que gestiona esta relación.
     @OneToMany(mappedBy = "editorial", cascade = CascadeType.ALL)
     private List<Libro> libros = new ArrayList<>();
 

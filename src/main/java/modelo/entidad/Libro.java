@@ -14,10 +14,12 @@ public class Libro {
     private String titulo;
     private double precio;
 
+    // Relación muchos a uno con la clase Autor. Esto significa que un libro pertenece a un autor.
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
+    // Relación muchos a uno con la clase Editorial. Esto significa que un libro pertenece a una editorial.
     @ManyToOne
     @JoinColumn(name = "editorial_id")
     private Editorial editorial;

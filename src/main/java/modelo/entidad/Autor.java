@@ -17,6 +17,11 @@ public class Autor {
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
 
+    // Relación uno a muchos con la clase Libro. Esto significa que un autor puede tener varios
+    // libros asociados. El atributo mappedBy especifica el nombre del campo en la clase Libro que gestiona
+    // esta relación.
+    // cascade = CascadeType.ALL indica que las operaciones de persistencia (guardar, actualizar, eliminar)
+    // realizadas en un autor también se aplicarán a sus libros asociados.
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Libro> libros = new ArrayList<>();
 

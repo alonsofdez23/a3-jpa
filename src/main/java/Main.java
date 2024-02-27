@@ -14,10 +14,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Crear el EntityManagerFactory y EntityManager para JPA
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("a3JPA");
         EntityManager em = emf.createEntityManager();
 
-        // Ejecutamos la semilla para insertar registros
+        // Ejecutamos la semilla para insertar registros en la base de datos
         DatabaseSeeder dbs = new DatabaseSeeder();
         dbs.seeder();
 
@@ -74,7 +75,7 @@ public class Main {
 //        EntityManager em2 = emf2.createEntityManager();
 //        EntityTransaction transaction2 = em2.getTransaction();
 
-        // Requerimiento 3
+        // Requerimiento 3: Convertir objetos a formato XML utilizando JAXB
         JAXBContext contexto;
         try {
             contexto = JAXBContext.newInstance(Almacen.class);
@@ -99,8 +100,11 @@ public class Main {
             System.out.println("====================================================");
             System.out.println("================== JAXB Artículos ==================");
             System.out.println("====================================================");
+
+            // Mostrar el XML en la consola
             m.marshal(almacen, System.out);
 
+            // Guardar el XML en un archivo
             m.marshal(almacen, new File("almacen.xml"));
 
         } catch (JAXBException e) {
